@@ -1,9 +1,7 @@
 -- Lista de keys válidas
 local keysValidas = {
-    "TIKI123",
-    "VIP456",
-    "MARKITO789",
-    "TESTE2024"
+    "VOID_SAPECA", --KEY MARKITO
+    "VOID_SAPECA2" --OUTRA KEY
 }
 
 -- Função para checar se a key digitada é válida
