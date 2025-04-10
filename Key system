@@ -61,7 +61,7 @@ Button.MouseButton1Click:Connect(function()
 		ScreenGui:Destroy()
 		print("✅ Key correta! Acessando o painel...")
 		-- Substitua pelo link do seu painel
-		loadstring(game:HttpGet("https://SEULINK.com/seuPainel.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Markito-xitos/Tiki-Manu/refs/heads/main/Tiki%20Manu%20-%20Painel"))()
 	else
 		Button.Text = "❌ Key incorreta!"
 		Button.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
