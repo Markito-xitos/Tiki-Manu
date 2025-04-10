@@ -1,0 +1,72 @@
+-- Lista de keys válidas
+local keysValidas = {
+    "TIKI123",
+    "VIP456",
+    "MARKITO789",
+    "TESTE2024"
+}
+
+-- Função para checar se a key digitada é válida
+local function keyValida(keyDigitada)
+	for _, key in ipairs(keysValidas) do
+		if keyDigitada == key then
+			return true
+		end
+	end
+	return false
+end
+
+-- Interface de verificação
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+ScreenGui.Name = "KeySystem"
+
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 300, 0, 150)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -75)
+Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Frame.BorderSizePixel = 0
+Instance.new("UICorner", Frame).CornerRadius = UDim.new(0, 10)
+
+local Title = Instance.new("TextLabel", Frame)
+Title.Text = "Digite a Key para acessar o menu"
+Title.Size = UDim2.new(1, 0, 0, 30)
+Title.BackgroundTransparency = 1
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 14
+
+local TextBox = Instance.new("TextBox", Frame)
+TextBox.PlaceholderText = "Insira a key aqui"
+TextBox.Size = UDim2.new(0.8, 0, 0, 30)
+TextBox.Position = UDim2.new(0.1, 0, 0.4, 0)
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.new(0, 0, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.Font = Enum.Font.Gotham
+TextBox.TextSize = 14
+
+local Button = Instance.new("TextButton", Frame)
+Button.Text = "Verificar Key"
+Button.Size = UDim2.new(0.8, 0, 0, 30)
+Button.Position = UDim2.new(0.1, 0, 0.7, 0)
+Button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+Button.TextColor3 = Color3.new(1, 1, 1)
+Button.Font = Enum.Font.GothamBold
+Button.TextSize = 14
+
+-- Verificação da key
+Button.MouseButton1Click:Connect(function()
+	local key = TextBox.Text
+	if keyValida(key) then
+		ScreenGui:Destroy()
+		print("✅ Key correta! Acessando o painel...")
+		-- Substitua pelo link do seu painel
+		loadstring(game:HttpGet("https://SEULINK.com/seuPainel.lua"))()
+	else
+		Button.Text = "❌ Key incorreta!"
+		Button.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+		wait(1)
+		Button.Text = "Verificar Key"
+		Button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+	end
+end)
